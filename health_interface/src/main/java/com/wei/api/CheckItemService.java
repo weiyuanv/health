@@ -3,6 +3,8 @@ package com.wei.api;
 import com.wei.entity.PageResult;
 import com.wei.pojo.CheckItem;
 
+import java.util.List;
+
 /**
  * @version V1.0
  * @author: weiyuan
@@ -19,4 +21,8 @@ public interface CheckItemService {
     void edit(CheckItem checkItem);
 
     CheckItem findById(Integer id);
+
+    List<CheckItem>  findAll();
+
+    List<Integer> findCheckItemIdsByCheckGroupId(Integer id);
 }

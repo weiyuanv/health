@@ -60,4 +60,16 @@
         </set>
         where id = #{id}
     </update>
+
+    <!--//检查组卡片中查找检查项信息-->
+    <select id="findAll" resultType="com.wei.pojo.CheckItem">
+        SELECT * FROM t_checkitem
+    </select>
+
+
+    <!--查询检查组关联的所有检查项id-->
+    <select id="findCheckItemIdsByCheckGroupId" resultType="Integer">
+        select checkitem_id from t_checkgroup_checkitem where checkgroup_id = #{id}
+    </select>
+
 </mapper>

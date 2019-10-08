@@ -2,6 +2,7 @@ package com.wei.controller;
 
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.wei.api.CheckGroupService;
 import com.wei.api.CheckItemService;
 import com.wei.common.MessageConstant;
 import com.wei.entity.PageResult;
@@ -11,7 +12,10 @@ import com.wei.pojo.CheckItem;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @version V1.0
@@ -26,6 +30,9 @@ public class CheckItemController {
     private static final Logger log = Logger.getLogger(CheckItemController.class);
     @Reference
     private CheckItemService checkItemService;
+
+    @Reference
+    private CheckGroupService checkGroupService;
 
     //新增数据
     @RequestMapping("/add")
@@ -92,6 +99,29 @@ public class CheckItemController {
             log.error("Add checkitem error.",e);
             return new Result(false, MessageConstant.EDIT_CHECKITEM_FAIL);
         }
-
     }
+
+    @RequestMapping("/findAll")
+    public Result findAll(){
+        try {
+            List<CheckItem> checkitem = checkItemService.findAll();
+            return new Result(true, MessageConstant.QUERY_CHECKITEM_SUCCESS,checkitem);
+        } catch (Exception e){
+            log.error("Find checkitem by id cause error.",e);
+        }
+        return new Result(false, MessageConstant.QUERY_CHECKITEM_FAIL);
+    }
+
+    @RequestMapping("/findCheckItemIdsByCheckGroupId")
+    public Result findCheckItemIdsByCheckGroupId(@RequestParam("id")Integer id){
+
+        try {
+            List<Integer> checkItemIds = checkItemService.findCheckItemIdsByCheckGroupId(id);
+            return new Result(true,MessageConstant.QUERY_CHECKITEM_SUCCESS,checkItemIds);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false,MessageConstant.QUERY_CHECKITEM_FAIL);
+        }
+    }
+
 }

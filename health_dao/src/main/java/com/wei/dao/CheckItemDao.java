@@ -3,6 +3,8 @@ package com.wei.dao;
 import com.github.pagehelper.Page;
 import com.wei.pojo.CheckItem;
 
+import java.util.List;
+
 /**
  * @version V1.0
  * @author: weiyuan
@@ -21,4 +23,8 @@ public interface CheckItemDao {
     void edit(CheckItem checkItem);
 
     CheckItem findById(Integer id);
+
+    List<CheckItem> findAll();
+
+    List<Integer> findCheckItemIdsByCheckGroupId(Integer id);
 }

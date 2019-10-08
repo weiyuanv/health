@@ -10,6 +10,8 @@ import com.wei.pojo.CheckItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @version V1.0
  * @author: weiyuan
@@ -55,5 +57,17 @@ public class CheckItemServiceImpl implements CheckItemService {
     @Override
     public CheckItem findById(Integer id) {
         return checkItemDao.findById(id);
+    }
+
+    //检查组卡片中查找检查项信息
+    @Override
+    public List<CheckItem> findAll() {
+        return checkItemDao.findAll();
+    }
+
+
+    @Override
+    public List<Integer> findCheckItemIdsByCheckGroupId(Integer id) {
+        return checkItemDao.findCheckItemIdsByCheckGroupId(id);
     }
 }
