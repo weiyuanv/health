@@ -48,4 +48,8 @@
         <property name="maxInMemorySize" value="4096" />
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
+
+    <!--加载applicationContext-redis.xml-->
+    <import resource="classpath:applicationContext-redis.xml"></import>
+
 </beans>

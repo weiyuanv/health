@@ -25,12 +25,14 @@ public class Setmeal implements Serializable {
     public void setCheckGroups(List<CheckGroup> checkGroups) {
         this.checkGroups = checkGroups;
     }
-    public Integer getId() {
-        return id;
-    }
+
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {

@@ -26,6 +26,7 @@ import java.util.Map;
 @Service(interfaceClass = CheckGroupService.class)
 @Transactional
 public class CheckGroupServiceImpl implements CheckGroupService {
+
     @Autowired
     private CheckGroupDao checkGroupDao;
     //新增
@@ -77,5 +78,11 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         //向中间表插入数据
         setCheckGroupAndCheckItem(checkGroup.getId(),checkitemIds);
         checkGroupDao.edit(checkGroup);
+    }
+
+    //查询所有检查组
+    @Override
+    public List<CheckGroup> findAll() {
+        return checkGroupDao.findAll();
     }
 }

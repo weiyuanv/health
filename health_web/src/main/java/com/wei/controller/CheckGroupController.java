@@ -43,7 +43,6 @@ public class CheckGroupController {
             log.error("Add checkitem error.",e);
             return new Result(false, MessageConstant.ADD_CHECKGROUP_FAIL);
         }
-
     }
 
     @RequestMapping("/findPage")
