@@ -51,5 +51,12 @@
 
     <!--加载applicationContext-redis.xml-->
     <import resource="classpath:applicationContext-redis.xml"></import>
-
+    <!--spring mvc注解驱动-->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg index="0" value="utf-8"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 </beans>
