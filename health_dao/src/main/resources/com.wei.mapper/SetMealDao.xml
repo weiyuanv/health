@@ -20,4 +20,38 @@
     </select>
 
 
+    <!--手机端查询所有套餐列表-->
+    <select id="getSetMeal" resultType="com.wei.pojo.Setmeal">
+        select * from t_setmeal
+    </select>
+
+
+
+    <resultMap id="baseResultMap" type="com.wei.pojo.Setmeal">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="helpCode" property="helpCode"/>
+        <result column="sex" property="sex"/>
+        <result column="age" property="age"/>
+        <result column="price" property="price"/>
+        <result column="remark" property="remark"/>
+        <result column="attention" property="attention"/>
+        <result column="img" property="img"/>
+    </resultMap>
+
+    <resultMap id="findByIdResultMap" type="com.wei.pojo.Setmeal" extends="baseResultMap"> 
+        <collection property="checkGroups" javaType="ArrayList"
+                    ofType="com.wei.pojo.CheckGroup" column="id"
+                    select="com.wei.dao.CheckGroupDao.findCheckGroupById">
+
+        </collection>
+    </resultMap>
+
+
+
+    <!--手机端获取套餐详情页面-->
+    <select id="findById" resultMap="findByIdResultMap">
+        select * from t_setmeal where id = #{id}
+    </select>
 </mapper>

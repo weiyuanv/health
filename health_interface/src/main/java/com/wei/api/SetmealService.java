@@ -4,6 +4,8 @@ import com.github.pagehelper.Page;
 import com.wei.entity.PageResult;
 import com.wei.pojo.Setmeal;
 
+import java.util.List;
+
 /**
  * @version V1.0
  * @author: weiyuan
@@ -14,4 +16,8 @@ public interface SetmealService {
     void add(Setmeal setmeal, Integer[] checkgroupIds);
 
     PageResult findPage(Integer currentPage, Integer pageSize, String queryString);
+
+    List<Setmeal> getSetMeal();
+
+    Setmeal findById(int id);
 }

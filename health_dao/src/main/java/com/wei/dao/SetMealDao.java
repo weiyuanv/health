@@ -6,6 +6,8 @@ import com.wei.pojo.CheckGroup;
 import com.wei.pojo.Setmeal;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @version V1.0
  * @author: weiyuan
@@ -18,4 +20,8 @@ public interface SetMealDao {
     void setSetmealAndCheckGroup(@Param("checkGroupId") Integer checkGroupId, @Param("id") Integer id);
 
     Page<Setmeal> findByCondition(@Param("queryString") String queryString);
+
+    List<Setmeal> getSetMeal();
+
+    Setmeal findById(int id);
 }

@@ -26,8 +26,8 @@
 
     <!--根据日期更新可预约人数-->
     <update id="editNumberByOrderDate" parameterType="com.wei.pojo.OrderSetting">
-  update t_ordersetting set number = #{number} where orderDate = #{orderDate}
-</update>
+      update t_ordersetting set number = #{number} where orderDate = #{orderDate}
+    </update>
 
 
 </mapper>

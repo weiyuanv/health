@@ -73,4 +73,31 @@
     <select id="findAll" resultType="com.wei.pojo.CheckGroup">
         select * from t_checkgroup
     </select>
+
+    
+    
+    
+    
+    
+    <resultMap id="baseResultMap" type="com.wei.pojo.CheckGroup">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="helpCode" property="helpCode"/>
+        <result column="sex" property="sex"/>
+        <result column="remark" property="remark"/>
+        <result column="attention" property="attention"/>
+    </resultMap>
+    
+    <resultMap id="findByIdResultMap" type="com.wei.pojo.CheckGroup" extends="baseResultMap">
+        <collection property="checkItems" javaType="ArrayList"
+                    ofType="com.wei.pojo.CheckItem" column="id"
+                    select="com.wei.dao.CheckItemDao.findCheckItemById">
+        </collection>
+    </resultMap>
+    <!--根据id查询套餐显示-->
+    <select id="findCheckGroupById" resultMap="findByIdResultMap">
+        select * from t_checkgroup  where id
+          in (select checkgroup_id from t_setmeal_checkgroup where setmeal_id=#{id})
+    </select>
 </mapper>

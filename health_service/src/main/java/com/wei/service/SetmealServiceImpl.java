@@ -59,4 +59,19 @@ public class SetmealServiceImpl implements SetmealService {
         Page<Setmeal> page = setMealDao.findByCondition(queryString);
         return new PageResult(page.getTotal(),page.getResult());
     }
+
+
+    //手机端查询所有套餐列表
+    @Override
+    public List<Setmeal> getSetMeal() {
+
+
+        return setMealDao.getSetMeal();
+    }
+
+    //手机端获取套餐详情页面
+    @Override
+    public Setmeal findById(int id) {
+        return setMealDao.findById(id);
+    }
 }
