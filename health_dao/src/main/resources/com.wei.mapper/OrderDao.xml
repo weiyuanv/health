@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wei.dao.OrderDao">
+
+    <!--通过会员编号、日期、套餐编号查询预约订单-->
+    <select id="findByCondition" resultType="com.wei.pojo.Order">
+        select * from t_order
+        <where>
+            <if test="memberId!=null">
+                member_id = #{memberId}
+            </if>
+            <if test="setmealId!=null">
+                and setmeal_id = #{setmealId}
+            </if>
+            <if test="orderDate!=null">
+                and orderDate = #{orderDate}
+            </if>
+        </where>
+    </select>
+
+    <!--新增预约订单-->
+    <insert id="add" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into t_order values (null,#{memberId},#{orderDate},#{orderType},#{orderStatus},#{setmealId})
+    </insert>
+
+
+    <!--通过id查询预约信息-->
+    <select id="findById" resultType="Map">
+        SELECT
+            m.name as member,s.name as setmeal,o.orderDate,o.orderType
+        FROM
+            t_order o
+        inner join t_member m on m.id = o.member_id
+        inner join t_setmeal s on s.id = o.setmeal_id
+        WHERE
+            o.id = #{id}
+</select>
+
+</mapper>

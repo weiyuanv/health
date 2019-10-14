@@ -30,4 +30,14 @@
     </update>
 
 
+    <!--//手机预约查询该日是否可以预约-->
+    <select id="findCountByDate" resultType="com.wei.pojo.OrderSetting">
+        select * from t_ordersetting where orderDate = #{orderDate}
+    </select>
+
+    <!--更新预约数量-->
+    <update id="updateReservationsByOrderDate">
+        update t_ordersetting set reservations = reservations + 1 where orderDate = #{orderDate}
+    </update>
+
 </mapper>

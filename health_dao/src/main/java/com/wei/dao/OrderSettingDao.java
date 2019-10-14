@@ -24,4 +24,8 @@ public interface OrderSettingDao {
 
     void editNumberByOrderDate(OrderSetting orderSetting);
 
+    //手机预约查询该日是否可以预约
+    OrderSetting findCountByDate(Date date);
+
+    void updateReservationsByOrderDate(Date date);
 }

@@ -76,7 +76,7 @@
 
     <!--根据检查组id查询检查项信息-手机端显示-->
     <select id="findCheckItemById" resultType="com.wei.pojo.CheckItem">
-  select * from t_checkitem  where id
-  in (select checkitem_id from t_checkgroup_checkitem where checkgroup_id=#{id})
-</select>
+      select * from t_checkitem  where id
+      in (select checkitem_id from t_checkgroup_checkitem where checkgroup_id=#{id})
+    </select>
 </mapper>
