@@ -46,4 +46,25 @@ public class ValidateCodeController {
         jedisPool.getResource().setex(RedisMessageConstant.SENDTYPE_ORDER + telephone,5*60*60,code.toString());
         return new Result(true, MessageConstant.SEND_VALIDATECODE_SUCCESS);
     }
+
+
+    //发送登录验证码
+    @RequestMapping("/send4Login")
+    public Result sendMessageLogin(String telephone) {
+        //产生4位验证码  6213
+        Integer code = ValidateCodeUtils.generateValidateCode(4);
+
+        try {
+            //发送短信
+            //SMSUtils.sendShortMessage(SMSUtils.VALIDATE_CODE,telephone,code+"");
+
+        } catch (Exception e) {
+            log.error("SendMessageLogin Error.", e);
+            return new Result(false, MessageConstant.SEND_VALIDATECODE_FAIL);
+        }
+
+        //将短信存入redis send4Login
+        jedisPool.getResource().setex(RedisMessageConstant.SENDTYPE_LOGIN + telephone,5*60*60,code.toString());
+        return new Result(true, MessageConstant.SEND_VALIDATECODE_SUCCESS);
+    }
 }

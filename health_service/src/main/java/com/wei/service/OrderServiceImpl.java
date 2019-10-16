@@ -86,10 +86,11 @@ public class OrderServiceImpl implements OrderService {
             order.setOrderDate(date);
             order.setSetmealId(Integer.parseInt((String)map.get("setmealId")));
 
-            //是会员查询是否重复预约
+            //是会员查询是否重复预约  todo list
             Order queryOrder = orderDao.findByCondition(order);
-            if (queryOrder == null) {
-                return  new Result(false, MessageConstant.HAS_ORDERED);
+            //todo 有问题？？
+            if (queryOrder != null) {
+                return new Result(false, MessageConstant.HAS_ORDERED);
             }
         }
 
