@@ -7,6 +7,10 @@ import com.wei.pojo.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 /**
  * @version V1.0
  * @author: weiyuan
@@ -30,5 +34,17 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public void add(Member member) {
         memberDao.add(member);
+    }
+
+    //查询过去1个月每月会员数量
+    @Override
+    public List<Integer> findMemberCountByMonth(List<String> month) {
+        List<Integer> list = new ArrayList<>();
+        for(String m : month){
+            m = m + ".31";//格式：2019.04.31
+            Integer count = memberDao.findMemberCountBeforeDate(m);
+            list.add(count);
+        }
+        return list;
     }
 }

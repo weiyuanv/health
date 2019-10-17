@@ -12,4 +12,8 @@
         insert into t_member values(null,#{fileNumber},#{name},#{sex},#{idCard},#{phoneNumber},#{regTime},#{password},#{email},#{birthday},#{remark});
     </insert>
 
+    <!--//查询过去1个月每月会员数量-->
+    <select id="findMemberCountBeforeDate" resultType="int">
+        select count(id) from t_member where regTime &lt;= #{value}
+    </select>
 </mapper>

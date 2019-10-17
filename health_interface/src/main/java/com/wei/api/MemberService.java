@@ -2,6 +2,9 @@ package com.wei.api;
 
 import com.wei.pojo.Member;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @version V1.0
  * @author: weiyuan
@@ -12,4 +15,7 @@ public interface MemberService {
     Member findMemberByTelephone(String telephone);
 
     void add(Member member);
+
+    //查询过去1个月每月会员数量
+    List<Integer> findMemberCountByMonth(List<String> list);
 }

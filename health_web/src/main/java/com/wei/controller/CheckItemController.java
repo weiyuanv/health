@@ -10,6 +10,7 @@ import com.wei.entity.QueryPageBean;
 import com.wei.entity.Result;
 import com.wei.pojo.CheckItem;
 import org.apache.log4j.Logger;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,6 +36,7 @@ public class CheckItemController {
     private CheckGroupService checkGroupService;
 
     //新增数据
+    @PreAuthorize("hasAuthority('CHECKITEM_ADD')")
     @RequestMapping("/add")
     public Result add(@RequestBody CheckItem checkItem) {
 
@@ -59,6 +61,7 @@ public class CheckItemController {
     }
 
     //删除数据
+    @PreAuthorize("hasAuthority('CHECKITEM_DELETE')")
     @RequestMapping("/delete")
     public Result delete(Integer id) {
         try {
@@ -89,6 +92,7 @@ public class CheckItemController {
     }
 
     //编辑数据
+    @PreAuthorize("hasAuthority('CHECKITEM_EDIT')")//权限校验
     @RequestMapping("/edit")
     public Result edit(@RequestBody CheckItem checkItem) {
 

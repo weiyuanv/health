@@ -8,6 +8,7 @@ import com.wei.dao.CheckItemDao;
 import com.wei.entity.PageResult;
 import com.wei.pojo.CheckItem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class CheckItemServiceImpl implements CheckItemService {
     private CheckItemDao checkItemDao;
     //新增
 
+
     @Override
     public void add(CheckItem checkItem) {
         checkItemDao.add(checkItem);
@@ -37,6 +39,7 @@ public class CheckItemServiceImpl implements CheckItemService {
         return new PageResult(page.getTotal(),page.getResult());
     }
 
+
     @Override
     public void delete(Integer id) {
         //查询当前检查项是否和检查组关联
@@ -48,6 +51,7 @@ public class CheckItemServiceImpl implements CheckItemService {
 
         checkItemDao.delete(id);
     }
+
 
     @Override
     public void edit(CheckItem checkItem) {

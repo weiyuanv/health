@@ -82,4 +82,7 @@ public class UserService implements UserDetailsService {
         org.springframework.security.core.userdetails.User user = new org.springframework.security.core.userdetails.User(username, passwordInDb, list);
         return user;
     }
+
+
+
 }
