@@ -1,6 +1,7 @@
 package com.wei.dao;
 
 import com.wei.pojo.Member;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @version V1.0
@@ -14,4 +15,10 @@ public interface MemberDao {
     void add(Member member);
 
     Integer findMemberCountBeforeDate(String m);
+
+    Integer findTodayNumber(String today);
+
+    Integer findTotalMember(String today);
+
+    Integer findNewMemberCountAfterDate(@Param("date")String date);
 }

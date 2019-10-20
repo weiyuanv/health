@@ -1,7 +1,9 @@
 package com.wei.dao;
 
 import com.wei.pojo.Order;
+import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,4 +18,22 @@ public interface OrderDao {
     void add(Order order);
 
     Map findById(Integer id);
+
+    List<Map<String, Object>> getSetmealReport();
+
+    //今日预约数
+    Integer findTodayOrderNumber(@Param("today") String today);
+
+    //本周或本月预约数
+    Integer findOrderNumberAfterDate(@Param("date")String date);
+
+    //今日到诊数
+    Integer findTodayVisitsNumber(@Param("today")String today);
+
+    //本周或本月到诊数
+    Integer findVisitsNumberAfterDate(@Param("date")String date);
+
+    //热门套餐
+    List<Map<String,Object>> findHotSetmeal();
+
 }

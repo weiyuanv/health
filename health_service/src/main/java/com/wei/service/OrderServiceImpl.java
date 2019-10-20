@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -123,5 +124,18 @@ public class OrderServiceImpl implements OrderService {
             e.printStackTrace();
         }
         return map;
+    }
+
+    //查询预约套餐数量 -- 饼图
+    @Override
+    public List<Map<String, Object>> getSetmealReport() {
+
+
+
+        List<Map<String, Object>> lists = orderDao.getSetmealReport();
+        /*for (Map map : lists) {
+            Object name = map.get("name");
+        }*/
+        return lists;
     }
 }

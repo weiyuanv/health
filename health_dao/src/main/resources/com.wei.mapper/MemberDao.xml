@@ -16,4 +16,19 @@
     <select id="findMemberCountBeforeDate" resultType="int">
         select count(id) from t_member where regTime &lt;= #{value}
     </select>
+
+    <select id="findTodayNumber" resultType="int">
+        select count(id) from t_member where regTime = #{today}
+    </select>
+
+    <select id="findTotalMember" resultType="int">
+        select count(id) from t_member
+    </select>
+
+    <!--统计本周或者本月新增会员数量-->
+    <select id="findNewMemberCountAfterDate" resultType="Integer">
+        select count(id) from t_member where regTime > #{date}
+
+    </select>
+
 </mapper>
