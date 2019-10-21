@@ -184,4 +184,24 @@ public class ReportController {
             return new Result(false, MessageConstant.GET_BUSINESS_REPORT_FAIL,null);
         }
     }
+
+    //统计会员男女比例年龄段分布--双饼图
+    @RequestMapping("/vipNumber")
+    public Result vipNumber() {
+        try {
+
+            Map<String, Object> result = new HashMap<>();
+
+
+            String vipNumber = memberService.toString();
+
+
+            result.put("sex", vipNumber);
+            return new Result(true, MessageConstant.GET_MEMBER_NUMBER_REPORT_SUCCESS, result);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false,MessageConstant.GET_MEMBER_NUMBER_REPORT_FAIL);
+        }
+
+    }
 }
